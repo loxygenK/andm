@@ -1,11 +1,14 @@
 import { Configuration } from "webpack";
 
+const production = process.env.NODE_ENV === "production";
+
 const configuration: Configuration = {
-  entry: "./src/main.ts",
+  entry: "./bin/index.ts",
+  mode: production ? "production" : "development",
   target: "node",
   resolve: {
     alias: {
-      "~": "./"
+      "~": "/src"
     },
     extensions: [".ts", ".js"]
   },
